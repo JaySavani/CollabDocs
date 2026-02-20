@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Docs Clone
+
+A comprehensive real-time collaborative documentation platform built with Next.js, similar to Google Docs.
+
+## Features
+
+- **Real-time collaborative editing**: Multiple users can edit the same document simultaneously.
+- **Live cursors and user presence indicators**: See who else is viewing or editing the document in real-time.
+- **Rich text editing**: Full support for formatting (bold, italic, lists, etc.) using a Tiptap-based editor.
+- **Secure authentication**: User management and session handling powered by Clerk.
+- **Instant sync**: Changes are synced instantly across all connected clients.
+- **Responsive, clean UI**: A modern interface built with Tailwind CSS and Shadcn UI.
+
+## Tech Stack
+
+### Frontend
+
+The frontend is built for performance and interactivity:
+
+- **Next.js (App Router)**: Utilizing server-side rendering and the latest routing capabilities.
+- **TypeScript**: Ensuring type safety and code reliability.
+- **React**: Component-based architecture for a modular UI.
+- **Tailwind CSS + Shadcn UI**: A utility-first CSS framework combined with accessible component primitives.
+- **Tiptap**: A headless wrapper for ProseMirror, providing a powerful rich text editing experience.
+
+### Backend & Infrastructure
+
+Serverless and scalable infrastructure:
+
+- **Liveblocks**: Handles the heavy lifting for real-time collaboration (WebSocket connections, conflict resolution).
+- **Convex**: A reactive, serverless database that syncs data in real-time to the client.
+- **Clerk**: A complete suite for authentication and user management.
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to set up the project locally.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Node.js (v18 or higher recommended)
+- npm, yarn, or pnpm
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Clone the repository**
 
-## Learn More
+   ```bash
+   git clone <repository-url>
+   cd docs-clone
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Environment Setup**
+   Create a `.env.local` file in the root directory and add the necessary environment variables for Clerk, Convex, and Liveblocks.
 
-## Deploy on Vercel
+   ```env
+   # Deployment used by `npx convex dev`
+   CONVEX_DEPLOYMENT=
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   NEXT_PUBLIC_CONVEX_URL=
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   # Clerk Auth
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+   CLERK_SECRET_KEY=
+
+   # Liveblocks
+   NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY=
+   LIVEBLOCKS_SECRET_KEY=
+   ```
+
+4. **Setup Convex**
+   Initialize and run the Convex development server:
+
+   ```bash
+   npx convex dev
+   ```
+
+5. **Run the Application**
+   In a separate terminal window, start the Next.js development server:
+
+   ```bash
+   npm run dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
