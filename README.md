@@ -1,4 +1,4 @@
-# Docs Clone
+# CollabDocs
 
 A comprehensive real-time collaborative documentation platform built with Next.js, similar to Google Docs.
 
@@ -21,6 +21,7 @@ The frontend is built for performance and interactivity:
 - **TypeScript**: Ensuring type safety and code reliability.
 - **React**: Component-based architecture for a modular UI.
 - **Tailwind CSS + Shadcn UI**: A utility-first CSS framework combined with accessible component primitives.
+- **Zustand**: Lightweight state management for handling UI state (e.g., toolbar settings).
 - **Tiptap**: A headless wrapper for ProseMirror, providing a powerful rich text editing experience.
 
 ### Backend & Infrastructure
@@ -30,6 +31,32 @@ Serverless and scalable infrastructure:
 - **Liveblocks**: Handles the heavy lifting for real-time collaboration (WebSocket connections, conflict resolution).
 - **Convex**: A reactive, serverless database that syncs data in real-time to the client.
 - **Clerk**: A complete suite for authentication and user management.
+
+## Project Structure
+
+```text
+CollabDocs/
+├── convex/                # Backend (Convex) - Schema, logic, and auth
+├── public/                # Static assets (images, icons)
+├── src/                   # Main application code
+│   ├── app/               # Next.js App Router (pages & layouts)
+│   │   ├── (home)/        # Landing page/Dashboard
+│   │   ├── api/           # API routes (Liveblocks auth, etc.)
+│   │   └── documents/     # Document-specific pages
+│   ├── components/        # Reusable UI components
+│   │   ├── ui/            # Basic UI elements (Shadcn UI)
+│   │   └── toolbar/       # Document toolbar components
+│   ├── constants/         # Shared constants/config
+│   ├── extensions/        # Tiptap custom extensions
+│   ├── hooks/             # Custom React hooks
+│   ├── lib/               # Utility functions
+│   ├── providers/         # Context providers (Convex, Clerk)
+│   └── store/             # State management (Zustand)
+├── liveblocks.config.ts   # Real-time collaboration config
+├── next.config.ts         # Next.js configuration
+├── tailwind.config.ts     # Tailwind CSS styling config
+└── package.json           # Dependencies and scripts
+```
 
 ## Getting Started
 
@@ -46,7 +73,7 @@ Follow these steps to set up the project locally.
 
    ```bash
    git clone <repository-url>
-   cd docs-clone
+   cd CollabDocs
    ```
 
 2. **Install dependencies**
